@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 """
 Index cleaned IT Asset CSV into Elastic Cloud.
 
@@ -6,8 +5,6 @@ Index cleaned IT Asset CSV into Elastic Cloud.
 - Index name: data-operations-it-assets_elk
 - Auth: Elastic Cloud API key (provided below)
 
-Run:
-  python index_data.py
 """
 
 import os
@@ -27,7 +24,7 @@ except Exception:
 CSV_PATH = Path("data/it_asset_inventory_cleaned.csv")
 INDEX_NAME = "data-operations-it-assets_elk"
 
-# Your Elastic Cloud endpoint + API key (as provided)
+# Your Elastic Cloud endpoint + API key 
 ES_ENDPOINT = "https://my-elasticsearch-project-c9f0a6.es.us-east-1.aws.elastic.cloud:443"
 ES_API_KEY = "Yl80dVJKb0JWVXY2SFFZTnNEWTk6UzlYWlAtQkJsVF9ic25mNGkybG9BUQ=="  # api_key can be a base64 string
 
@@ -64,7 +61,6 @@ def ensure_index(es: Elasticsearch, index_name: str) -> None:
     - Room for future fields via dynamic mapping
     """
     mapping = {
-        "settings": {"number_of_shards": 1, "number_of_replicas": 1},
         "mappings": {
             "properties": {
                 "hostname": {"type": "keyword"},

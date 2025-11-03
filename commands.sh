@@ -58,3 +58,164 @@ origin  https://github.com/kevil21/data-operations-it-assets_ELK.git (push)
 (.venv) kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> touch index_data.py
 (.venv) kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> 
 
+
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git remote -v
+origin  https://github.com/kevil21/data-operations-it-assets_ELK.git (fetch)
+origin  https://github.com/kevil21/data-operations-it-assets_ELK.git (push)
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        Mini Project_1.pdf
+        commands.sh
+        data.ipynb
+        data/
+        index_data.py
+        requirements.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .gitignore
+        Mini Project_1.pdf
+        commands.sh
+        data.ipynb
+        data/
+        index_data.py
+        requirements.txt
+
+nothing added to commit but untracked files present (use "git add" to track)
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git add .
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   .gitignore
+        new file:   Mini Project_1.pdf
+        new file:   commands.sh
+        new file:   data.ipynb
+        new file:   data/it_asset_inventory_cleaned.csv
+        new file:   data/it_asset_inventory_enriched.csv
+        new file:   index_data.py
+        new file:   requirements.txt
+
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git commit -m "Release version 1.0.0"
+[main (root-commit) 57a31be] Release version 1.0.0
+ 8 files changed, 1236 insertions(+)
+ create mode 100644 .gitignore
+ create mode 100644 Mini Project_1.pdf
+ create mode 100644 commands.sh
+ create mode 100644 data.ipynb
+ create mode 100644 data/it_asset_inventory_cleaned.csv
+ create mode 100644 data/it_asset_inventory_enriched.csv
+ create mode 100644 index_data.py
+ create mode 100644 requirements.txt
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git tag -a v1.0.0
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git push origin --tags
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (11/11), done.
+Writing objects: 100% (12/12), 267.01 KiB | 20.54 MiB/s, done.
+Total 12 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/kevil21/data-operations-it-assets_ELK.git
+ * [new tag]         v1.0.0 -> v1.0.0
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git push -u origin main
+To https://github.com/kevil21/data-operations-it-assets_ELK.git
+ ! [rejected]        main -> main (fetch first)
+error: failed to push some refs to 'https://github.com/kevil21/data-operations-it-assets_ELK.git'
+hint: Updates were rejected because the remote contains work that you do not
+hint: have locally. This is usually caused by another repository pushing to
+hint: the same ref. If you want to integrate the remote changes, use
+hint: 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main) [1]> git pull
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+Unpacking objects: 100% (3/3), 1.44 KiB | 493.00 KiB/s, done.
+From https://github.com/kevil21/data-operations-it-assets_ELK
+ * [new branch]      main       -> origin/main
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> main
+
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main) [1]> git push -u origin main
+To https://github.com/kevil21/data-operations-it-assets_ELK.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/kevil21/data-operations-it-assets_ELK.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main) [1]> git push main
+fatal: 'main' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main) [128]> git push origin main
+To https://github.com/kevil21/data-operations-it-assets_ELK.git
+ ! [rejected]        main -> main (non-fast-forward)
+error: failed to push some refs to 'https://github.com/kevil21/data-operations-it-assets_ELK.git'
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. If you want to integrate the remote changes,
+hint: use 'git pull' before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main) [1]> git pull
+There is no tracking information for the current branch.
+Please specify which branch you want to merge with.
+See git-pull(1) for details.
+
+    git pull <remote> <branch>
+
+If you wish to set tracking information for this branch you can do so with:
+
+    git branch --set-upstream-to=origin/<branch> main
+
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main) [1]> git pull --rebase origin main
+From https://github.com/kevil21/data-operations-it-assets_ELK
+ * branch            main       -> FETCH_HEAD
+Successfully rebased and updated refs/heads/main.
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git push -u origin main
+Enumerating objects: 12, done.
+Counting objects: 100% (12/12), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (11/11), 266.95 KiB | 24.27 MiB/s, done.
+Total 11 (delta 1), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (1/1), done.
+To https://github.com/kevil21/data-operations-it-assets_ELK.git
+   9f57b14..c442e6f  main -> main
+branch 'main' set up to track 'origin/main'.
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git tag -a v1.0.0
+fatal: tag 'v1.0.0' already exists
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main) [128]> git pull main 
+fatal: 'main' does not appear to be a git repository
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main) [1]> git pull
+Already up to date.
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> touch transform_data.py
