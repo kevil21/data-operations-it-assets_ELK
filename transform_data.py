@@ -85,7 +85,7 @@ def enrich_fields(es: Elasticsearch, index_name: str) -> None:
     script = {
         "script": {
             "lang": "painless",
-            "source": """
+            "source":
                 // risk_level
                 def lvl = 'Low';
                 if (ctx._source.containsKey('operating_system_lifecycle_status')) {
@@ -112,7 +112,7 @@ def enrich_fields(es: Elasticsearch, index_name: str) -> None:
                 } else {
                     ctx._source.system_age_years = null;
                 }
-            """
+
         },
         "query": {"match_all": {}}
     }
