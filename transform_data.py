@@ -12,6 +12,7 @@ Transform data in Elastic Cloud:
 import logging
 import dotenv
 import os
+from datetime import date
 from elasticsearch import Elasticsearch
 
 # ----------- CONFIG -----------
@@ -85,12 +86,16 @@ def reindex(es: Elasticsearch, src: str, dst: str) -> None:
     logger.info("Reindex completed.")
 
 def enrich_fields(es: Elasticsearch, index_name: str) -> None:
-    script = {
+    body = {
+        "conflicts": "proceed",
         "script": {
             "lang": "painless",
-            "source":
-                // risk_level
-                def lvl = 'Low';
+            "params": {
+                "now_year": date.today().year  # avoid java.time in Painless
+            },
+            "source": """
+                // ---- risk_level: High for EOL/EOS, else Low
+                String lvl = 'Low';
                 if (ctx._source.containsKey('operating_system_lifecycle_status')) {
                     def s = ctx._source.operating_system_lifecycle_status;
                     if (s != null) {
@@ -100,14 +105,16 @@ def enrich_fields(es: Elasticsearch, index_name: str) -> None:
                 }
                 ctx._source.risk_level = lvl;
 
-                // system_age_years from YYYY-MM-DD
+                // ---- system_age_years using YYYY-MM-DD string (no java.time)
                 def d = ctx._source.get('operating_system_installation_date');
                 if (d != null && d != 'Unknown') {
                     try {
-                        def install = LocalDate.parse(d.toString());
-                        def now = LocalDate.now();
-                        int years = now.getYear() - install.getYear();
-                        if (now.getDayOfYear() < install.getDayOfYear()) { years = years - 1; }
+                        String ds = d.toString();
+                        // Expecting 'YYYY-MM-DD' → take first 4 chars
+                        int installYear = Integer.parseInt(ds.substring(0, 4));
+                        int years = params.now_year - installYear;
+                        // Clamp to non-negative just in case
+                        if (years < 0) { years = 0; }
                         ctx._source.system_age_years = years;
                     } catch (Exception e) {
                         ctx._source.system_age_years = null;
@@ -115,17 +122,17 @@ def enrich_fields(es: Elasticsearch, index_name: str) -> None:
                 } else {
                     ctx._source.system_age_years = null;
                 }
-
+            """
         },
-        "query": {"match_all": {}}
+        "query": { "match_all": {} }
     }
+
     logger.info("Applying enrichment on '%s' ...", index_name)
     es.update_by_query(
         index=index_name,
-        body=script,
+        body=body,
         refresh=True,
         wait_for_completion=True,
-        conflicts="proceed",
         slices="auto",
         requests_per_second=-1,
     )
