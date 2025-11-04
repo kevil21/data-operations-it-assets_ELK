@@ -11,6 +11,7 @@ import os
 import csv
 import sys
 import logging
+import dotenv
 from pathlib import Path
 from typing import Iterator, Dict, Any
 
@@ -25,8 +26,10 @@ CSV_PATH = Path("data/it_asset_inventory_cleaned.csv")
 INDEX_NAME = "data-operations-it-assets_elk"
 
 # Your Elastic Cloud endpoint + API key 
-ES_ENDPOINT = "https://my-elasticsearch-project-c9f0a6.es.us-east-1.aws.elastic.cloud:443"
-ES_API_KEY = "Yl80dVJKb0JWVXY2SFFZTnNEWTk6UzlYWlAtQkJsVF9ic25mNGkybG9BUQ=="  # api_key can be a base64 string
+dotenv.load_dotenv()  # load from .env file if present
+ES_ENDPOINT = os.getenv("ES_ENDPOINT")
+ES_API_KEY = os.getenv("ES_API_KEY")
+
 
 # ---------- Logging ----------
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")

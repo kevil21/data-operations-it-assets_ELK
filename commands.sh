@@ -219,3 +219,69 @@ and the repository exists.
 kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main) [1]> git pull
 Already up to date.
 kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> touch transform_data.py
+
+
+kevil@NVWWMK-662FF940 data-operations-it-assets_ELK % fish
+Welcome to fish, the friendly interactive shell
+Type help for instructions on how to use fish
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git remote -v
+origin  https://github.com/kevil21/data-operations-it-assets_ELK.git (fetch)
+origin  https://github.com/kevil21/data-operations-it-assets_ELK.git (push)
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> 
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+        modified:   transform_data.py
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+        .DS_Store
+        Visualisations/
+
+no changes added to commit (use "git add" and/or "git commit -a")
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git add .
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git status
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   .gitignore
+        new file:   Visualisations/Country Rank Performance Wise.png
+        new file:   Visualisations/OS State of Providers.png
+        new file:   Visualisations/Performance Score Country wise.png
+        new file:   Visualisations/Performance Score OS provider wise.png
+        new file:   Visualisations/Unique Lifestyle Status Country wise.png
+        modified:   transform_data.py
+
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git commit -m "v2.0.0 Added Visualisations"
+[main a6cbf46] v2.0.0 Added Visualisations
+ 7 files changed, 3 insertions(+), 2 deletions(-)
+ create mode 100644 Visualisations/Country Rank Performance Wise.png
+ create mode 100644 Visualisations/OS State of Providers.png
+ create mode 100644 Visualisations/Performance Score Country wise.png
+ create mode 100644 Visualisations/Performance Score OS provider wise.png
+ create mode 100644 Visualisations/Unique Lifestyle Status Country wise.png
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git tag -a v2.0.0
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git push -u origin main
+Enumerating objects: 13, done.
+Counting objects: 100% (13/13), done.
+Delta compression using up to 10 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (10/10), 986.92 KiB | 31.84 MiB/s, done.
+Total 10 (delta 2), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (2/2), completed with 2 local objects.
+To https://github.com/kevil21/data-operations-it-assets_ELK.git
+   e38fa18..a6cbf46  main -> main
+branch 'main' set up to track 'origin/main'.
+kevil@NVWWMK-662FF940 ~/L/C/O/D/K/T/3/data-operations-it-assets_ELK (main)> git push origin --tags
+Enumerating objects: 1, done.
+Counting objects: 100% (1/1), done.
+Writing objects: 100% (1/1), 174 bytes | 174.00 KiB/s, done.
+Total 1 (delta 0), reused 0 (delta 0), pack-reused 0 (from 0)
+To https://github.com/kevil21/data-operations-it-assets_ELK.git
+ * [new tag]         v2.0.0 -> v2.0.0

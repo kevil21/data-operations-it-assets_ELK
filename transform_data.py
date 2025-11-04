@@ -10,11 +10,14 @@ Transform data in Elastic Cloud:
 """
 
 import logging
+import dotenv
+import os
 from elasticsearch import Elasticsearch
 
 # ----------- CONFIG -----------
-ES_ENDPOINT = "https://my-elasticsearch-project-c9f0a6.es.us-east-1.aws.elastic.cloud:443"
-ES_API_KEY = "Yl80dVJKb0JWVXY2SFFZTnNEWTk6UzlYWlAtQkJsVF9ic25mNGkybG9BUQ=="
+dotenv.load_dotenv()  # load from .env file if present
+ES_ENDPOINT = os.getenv("ES_ENDPOINT")
+ES_API_KEY = os.getenv("ES_API_KEY")
 
 SRC_INDEX = "data-operations-it-assets_elk"
 DST_INDEX = "data-operations-it-assets_elk_final"
